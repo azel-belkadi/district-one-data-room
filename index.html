@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>District One — Presentation Institutionnelle V2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0f1117;--ink80:rgba(15,17,23,.8);--ink60:rgba(15,17,23,.6);--ink30:rgba(15,17,23,.3);--ink10:rgba(15,17,23,.1);--ink05:rgba(15,17,23,.05);
+  --w:#ffffff;--bg:#f8f7f5;--card:#ffffff;
+  --gold:#a68b3c;--goldL:#c4a84d;--goldD:#8a7432;
+  --green:#1a7a4c;--greenL:#e8f5ee;
+  --red:#c0392b;--redL:#fdecea;
+  --blue:#2563eb;--blueL:#eff4ff;
+  --serif:'DM Serif Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+.c{max-width:1180px;margin:0 auto;padding:0 32px}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,17,23,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(166,139,60,.15);padding:14px 0}
+.ni{display:flex;align-items:center;justify-content:space-between}
+.nl{font-family:var(--serif);font-size:1.1rem;color:var(--w);text-decoration:none}
+.nl span{color:var(--gold)}
+.nk{display:flex;gap:24px;align-items:center}
+.nk a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color .3s}
+.nk a:hover{color:var(--gold)}
+.nc{background:var(--gold);color:var(--ink)!important;padding:6px 16px;border-radius:4px;font-weight:600}
+
+/* ===== HERO ===== */
+.hero{padding:140px 0 80px;background:var(--ink);position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(166,139,60,.08) 0%,transparent 50%)}
+.hero .c{position:relative;z-index:2}
+.ht{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.htag{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:16px;opacity:0;animation:fadeUp .6s .2s forwards}
+.htitle{font-family:var(--serif);font-size:2.6rem;color:var(--w);line-height:1.15;margin-bottom:20px;opacity:0;animation:fadeUp .6s .3s forwards}
+.htitle em{color:var(--gold);font-style:italic}
+.hsub{color:rgba(255,255,255,.45);font-size:.85rem;line-height:1.7;max-width:440px;opacity:0;animation:fadeUp .6s .4s forwards}
+.hkpi{display:grid;grid-template-columns:1fr 1fr;gap:16px;opacity:0;animation:fadeUp .6s .5s forwards}
+.hk{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:20px 16px;text-align:center}
+.hkv{font-family:var(--mono);font-size:1.4rem;font-weight:600;color:var(--gold);margin-bottom:4px}
+.hkl{font-size:.6rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:1.5px;font-weight:500}
+.hks{font-size:.65rem;color:rgba(255,255,255,.2);margin-top:2px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== SECTIONS ===== */
+section{padding:72px 0}
+.stag{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px}
+.stitle{font-family:var(--serif);font-size:1.8rem;color:var(--ink);line-height:1.2;margin-bottom:6px}
+.stitle em{color:var(--gold);font-style:italic}
+.sdesc{color:var(--ink60);font-size:.85rem;max-width:640px;margin-bottom:32px}
+.shr{width:48px;height:2px;background:var(--gold);margin:12px 0 24px;border-radius:1px}
+
+/* ===== TABLES ===== */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -8px 24px;padding:0 8px}
+.tbl{width:100%;border-collapse:collapse;font-size:.82rem;white-space:nowrap}
+.tbl th{background:var(--ink);color:var(--w);font-weight:600;text-transform:uppercase;letter-spacing:.5px;font-size:.65rem;padding:12px 14px;text-align:left;border-bottom:2px solid var(--gold)}
+.tbl th.r{text-align:right}
+.tbl th.c{text-align:center}
+.tbl td{padding:10px 14px;border-bottom:1px solid var(--ink10);vertical-align:middle;font-size:.82rem}
+.tbl td.r{text-align:right;font-family:var(--mono);font-size:.8rem}
+.tbl td.c{text-align:center}
+.tbl td.b{font-weight:600}
+.tbl td.gold{color:var(--gold);font-weight:600}
+.tbl td.green{color:var(--green);font-weight:600}
+.tbl td.red{color:var(--red)}
+.tbl tr.hl{background:var(--ink05)}
+.tbl tr.hl td{font-weight:600}
+.tbl tr:hover{background:rgba(166,139,60,.03)}
+.tbl caption{caption-side:top;text-align:left;font-size:.7rem;color:var(--ink30);margin-bottom:8px;font-style:italic;white-space:normal}
+
+/* ===== METRIC CARDS ===== */
+.mg{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:32px}
+.mc{background:var(--card);border:1px solid var(--ink10);border-radius:8px;padding:20px 16px;text-align:center;transition:all .3s}
+.mc:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(166,139,60,.08)}
+.mcv{font-family:var(--mono);font-size:1.3rem;font-weight:600;color:var(--ink);margin-bottom:4px}
+.mcv.gold{color:var(--gold)}
+.mcv.green{color:var(--green)}
+.mcl{font-size:.58rem;color:var(--ink30);text-transform:uppercase;letter-spacing:1.5px;font-weight:500}
+.mcs{font-size:.65rem;color:var(--ink60);margin-top:4px}
+
+/* ===== SCENARIO BOXES ===== */
+.scenarios{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.sbox{background:var(--card);border:1px solid var(--ink10);border-radius:10px;padding:28px;position:relative;overflow:hidden}
+.sbox.primary{border:2px solid var(--gold);background:linear-gradient(135deg,rgba(166,139,60,.02),var(--card))}
+.sbox.primary::before{content:'SCENARIO BASE';position:absolute;top:12px;right:16px;font-size:.55rem;letter-spacing:2px;color:var(--gold);font-weight:700;text-transform:uppercase}
+.sbox.option::before{content:'OPTION ARBITRAGE';position:absolute;top:12px;right:16px;font-size:.55rem;letter-spacing:2px;color:var(--green);font-weight:700;text-transform:uppercase}
+.sbox h3{font-family:var(--serif);font-size:1.15rem;color:var(--ink);margin-bottom:8px}
+.sbox p{font-size:.8rem;color:var(--ink60);line-height:1.6;margin-bottom:16px}
+.sbox .skpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sbox .skpi{background:var(--ink05);border-radius:6px;padding:10px;text-align:center}
+.sbox .skpiv{font-family:var(--mono);font-size:1rem;font-weight:600}
+.sbox .skpil{font-size:.55rem;color:var(--ink30);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+
+/* ===== EVOLUTION BAR ===== */
+.evo{display:flex;align-items:flex-end;gap:6px;height:140px;margin:24px 0 8px}
+.evo-bar{flex:1;background:linear-gradient(to top,var(--gold),var(--goldL));border-radius:4px 4px 0 0;transition:height .6s ease;position:relative;min-height:8px}
+.evo-bar .ev{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.6rem;font-weight:600;color:var(--ink);white-space:nowrap}
+.evo-bar .el{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:.55rem;color:var(--ink30);white-space:nowrap;font-weight:500}
+.evo-labels{display:flex;gap:6px;margin-bottom:24px}
+.evo-labels span{flex:1;text-align:center;font-size:.55rem;color:var(--ink30);font-weight:500}
+
+/* ===== LOCATAIRES ===== */
+.locgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.loc{background:var(--card);border:1px solid var(--ink10);border-radius:8px;padding:14px;display:flex;justify-content:space-between;align-items:center;transition:all .2s}
+.loc:hover{border-color:var(--gold)}
+.locn{font-weight:600;font-size:.8rem}
+.locm{font-family:var(--mono);font-size:.75rem;color:var(--gold);font-weight:600}
+.locd{font-size:.65rem;color:var(--ink30)}
+.loc.vacant{opacity:.5;border-style:dashed}
+
+/* ===== CESSIONS ===== */
+.cg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+.cb{background:var(--card);border:1px solid var(--ink10);border-radius:10px;padding:20px;text-align:center;position:relative}
+.cb.reco{border:2px solid var(--green);background:var(--greenL)}
+.cbtag{font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px}
+.cbv{font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--ink);margin-bottom:4px}
+.cbl{font-size:.7rem;color:var(--ink60)}
+.cbm{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.cbmk{background:var(--ink05);border-radius:4px;padding:6px}
+.cbmkv{font-family:var(--mono);font-size:.8rem;font-weight:600}
+.cbmkl{font-size:.5rem;color:var(--ink30);text-transform:uppercase;letter-spacing:1px}
+
+/* ===== STRUCTURE ===== */
+.waterfall{display:flex;align-items:flex-end;gap:2px;height:200px;margin:24px 0 32px;padding-bottom:24px;border-bottom:1px solid var(--ink10)}
+.wbar{flex:1;border-radius:4px 4px 0 0;position:relative;transition:height .4s;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding-top:6px}
+.wbar .wv{font-family:var(--mono);font-size:.6rem;font-weight:600;color:var(--w)}
+.wbar .wl{position:absolute;bottom:-20px;font-size:.5rem;color:var(--ink30);text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.wbar .wp{font-size:.5rem;color:rgba(255,255,255,.7);margin-top:1px}
+
+/* ===== FOOTER ===== */
+footer{background:var(--ink);padding:40px 0 24px;border-top:1px solid rgba(166,139,60,.15)}
+.fbot{display:flex;justify-content:space-between;align-items:center;font-size:.65rem;color:rgba(255,255,255,.25)}
+.fbot strong{color:var(--gold)}
+.fleg{font-size:.55rem;color:rgba(255,255,255,.12);max-width:700px;line-height:1.6;margin-top:16px}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:968px){.ht,.scenarios{grid-template-columns:1fr}.mg{grid-template-columns:repeat(3,1fr)}.locgrid,.cg{grid-template-columns:1fr 1fr}.hkpi{grid-template-columns:1fr 1fr}.tbl{font-size:.78rem}.tbl td,.tbl th{padding:10px 12px}.tbl td.r{font-size:.78rem}}
+@media(max-width:600px){.mg{grid-template-columns:1fr 1fr}.locgrid,.cg{grid-template-columns:1fr}.nk{display:none}.tbl{font-size:.75rem;min-width:580px}.tbl td,.tbl th{padding:8px 10px}.tbl td.r{font-size:.75rem}.c{padding:0 16px}.htitle{font-size:1.8rem}.stitle{font-size:1.4rem}.loc{flex-direction:column;align-items:flex-start;gap:4px}.locm{align-self:flex-end}}
+
+/* ===== REVEAL ===== */
+.rv{opacity:0;transform:translateY(20px);transition:all .5s cubic-bezier(.16,1,.3,1)}.rv.v{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav><div class="c ni">
+  <a href="#" class="nl">District <span>One</span></a>
+  <div class="nk">
+    <a href="#kpis">KPIs</a>
+    <a href="#locataires">Locataires</a>
+    <a href="#base">Scenario Base</a>
+    <a href="#option">Option Arbitrage</a>
+    <a href="#structure">Structure</a>
+    <a href="https://azel-belkadi.github.io/District-one-porteur-projet/" target="_blank" class="nc">Porteur de Projet</a>
+    <a href="#contact" class="nc">Contact</a>
+  </div>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="c">
+  <div class="ht">
+    <div>
+      <div class="htag">Presentation institutionnelle — Avril 2026</div>
+      <h1 class="htitle">Actif mixte <em>10 092 m&sup2;</em><br>Grand Avignon</h1>
+      <p class="hsub">Acquisition patrimoniale 15 ans. 884 K&euro; de loyers reels factures T2 2026. 10 baux actifs, enseignes nationales. DSCR 1,44x. Capacite d'arbitrage optionnelle pour desendettement accelere.</p>
+    </div>
+    <div class="hkpi">
+      <div class="hk"><div class="hkv">10 M&euro;</div><div class="hkl">Prix d'acquisition</div></div>
+      <div class="hk"><div class="hkv">6 M&euro;</div><div class="hkl">Pret bancaire</div><div class="hks">LTV 60%</div></div>
+      <div class="hk"><div class="hkv">8,8%</div><div class="hkl">Rendement brut reel</div><div class="hks">Loyers factures T2 2026</div></div>
+      <div class="hk"><div class="hkv">1,44x</div><div class="hkl">DSCR An 1</div><div class="hks">Seuil banque: 1,20x</div></div>
+      <div class="hk"><div class="hkv">71%</div><div class="hkl">Taux d'occupation</div><div class="hks">10/14 lots — Cible 100%</div></div>
+      <div class="hk"><div class="hkv">15 ans</div><div class="hkl">Duree pret</div><div class="hks">Taux fixe 4,50%</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- KPIs SECTION -->
+<section id="kpis" style="background:var(--w);border-bottom:1px solid var(--ink10)">
+<div class="c">
+  <div class="stag rv">Metriques cles</div>
+  <div class="stitle rv d1">Ratios <em>bancaires</em> & rendements</div>
+  <div class="shr rv d2"></div>
+  <div class="mg rv d3">
+    <div class="mc"><div class="mcv gold">884 059 &euro;</div><div class="mcl">Loyers reels An 1</div><div class="mcs">10 baux factures</div></div>
+    <div class="mc"><div class="mcv green">1,44x</div><div class="mcl">DSCR An 1</div><div class="mcs">NOI / Service dette</div></div>
+    <div class="mc"><div class="mcv">60%</div><div class="mcl">LTV initiale</div><div class="mcs">6M / 10M</div></div>
+    <div class="mc"><div class="mcv gold">8,8%</div><div class="mcl">Rendement brut</div><div class="mcs">Loyers / Prix acq.</div></div>
+    <div class="mc"><div class="mcv">10,2%</div><div class="mcl">Rdt brut potentiel</div><div class="mcs">Incl. 4 vacants</div></div>
+  </div>
+
+  <!-- DSCR Evolution -->
+  <div class="stag rv">Evolution du DSCR sur 15 ans (scenario base)</div>
+  <div class="evo rv d1">
+    <div class="evo-bar" style="height:42%"><div class="ev">1,44x</div><div class="el">An 1</div></div>
+    <div class="evo-bar" style="height:53%"><div class="ev">1,68x</div><div class="el">An 2</div></div>
+    <div class="evo-bar" style="height:55%"><div class="ev">1,71x</div><div class="el">An 3</div></div>
+    <div class="evo-bar" style="height:60%"><div class="ev">1,78x</div><div class="el">An 5</div></div>
+    <div class="evo-bar" style="height:75%"><div class="ev">1,97x</div><div class="el">An 10</div></div>
+    <div class="evo-bar" style="height:100%"><div class="ev">2,17x</div><div class="el">An 15</div></div>
+  </div>
+  <div style="height:28px"></div>
+
+  <!-- Ratios table -->
+  <div class="tbl-wrap"><table class="tbl rv">
+    <caption>Projection 15 ans — Scenario base (vacants loues An 2, indexation +2%/an, loyers factures T2 2026)</caption>
+    <thead>
+      <tr><th>Indicateur</th><th class="r">An 1</th><th class="r">An 2</th><th class="r">An 3</th><th class="r">An 5</th><th class="r">An 10</th><th class="r">An 15</th><th class="c">Seuil</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="b">Loyers bruts</td><td class="r">884 059 &euro;</td><td class="r gold">1 015 059 &euro;</td><td class="r">1 035 360 &euro;</td><td class="r">1 077 085 &euro;</td><td class="r">1 189 226 &euro;</td><td class="r">1 313 007 &euro;</td><td class="c">—</td></tr>
+      <tr><td class="b">NOI</td><td class="r">794 059 &euro;</td><td class="r gold">923 259 &euro;</td><td class="r">941 724 &euro;</td><td class="r">980 467 &euro;</td><td class="r">1 082 531 &euro;</td><td class="r">1 194 199 &euro;</td><td class="c">—</td></tr>
+      <tr><td class="b">Service dette</td><td class="r">550 795 &euro;</td><td class="r">550 795 &euro;</td><td class="r">550 795 &euro;</td><td class="r">550 795 &euro;</td><td class="r">550 795 &euro;</td><td class="r">550 795 &euro;</td><td class="c">—</td></tr>
+      <tr><td class="b green">DSCR</td><td class="r green">1,44x</td><td class="r green b">1,68x</td><td class="r green">1,71x</td><td class="r green">1,78x</td><td class="r green">1,97x</td><td class="r green">2,17x</td><td class="c green">&ge; 1,20x &check;</td></tr>
+      <tr><td class="b">CRD residuel</td><td class="r">5 713 K&euro;</td><td class="r">5 414 K&euro;</td><td class="r">5 100 K&euro;</td><td class="r">4 429 K&euro;</td><td class="r">2 462 K&euro;</td><td class="r b green">0 &euro;</td><td class="c">—</td></tr>
+      <tr><td class="b">LTV</td><td class="r">57,1%</td><td class="r">54,1%</td><td class="r">51,0%</td><td class="r">44,3%</td><td class="r">24,6%</td><td class="r b green">0,0%</td><td class="c green">&le; 80% &check;</td></tr>
+      <tr><td class="b">Rendement brut</td><td class="r">8,8%</td><td class="r gold">10,2%</td><td class="r">10,4%</td><td class="r">10,8%</td><td class="r">11,9%</td><td class="r">13,1%</td><td class="c green">&ge; 6% &check;</td></tr>
+    </tbody>
+  </table></div>
+</div>
+</section>
+
+<!-- LOCATAIRES -->
+<section id="locataires">
+<div class="c">
+  <div class="stag rv">Portefeuille locatif</div>
+  <div class="stitle rv d1">10 baux actifs, <em>enseignes diversifiees</em></div>
+  <div class="shr rv d2"></div>
+  <div class="sdesc rv d2">Portefeuille multi-locataires avec ancrage d'enseignes nationales (Picard, Kiloutou, Mobalpa, Givaudan). Loyers reels factures T2 2026. Potentiel additionnel de +131 K&euro;/an via commercialisation des 4 lots vacants.</div>
+  
+  <div class="locgrid rv d3">
+    <div class="loc"><div><div class="locn">YOU JUMP 84</div><div class="locd">Loisirs — 3 250 m&sup2;</div></div><div class="locm">218 075 &euro;</div></div>
+    <div class="loc"><div><div class="locn">GIVAUDAN (ex-Naturex)</div><div class="locd">Bureaux / Labo — 2 050 m&sup2;</div></div><div class="locm">133 684 &euro;</div></div>
+    <div class="loc"><div><div class="locn">SCI VITAL</div><div class="locd">Multi-usages — 680 m&sup2;</div></div><div class="locm">120 000 &euro;</div></div>
+    <div class="loc"><div><div class="locn">KILOUTOU</div><div class="locd">Location materiel — 630 m&sup2;</div></div><div class="locm">98 156 &euro;</div></div>
+    <div class="loc"><div><div class="locn">MOBALPA (Le Sarment)</div><div class="locd">Commerce — 470 m&sup2;</div></div><div class="locm">74 073 &euro;</div></div>
+    <div class="loc"><div><div class="locn">PICARD SURGELES</div><div class="locd">Commerce alim. — 480 m&sup2;</div></div><div class="locm">73 224 &euro;</div></div>
+    <div class="loc"><div><div class="locn">TREMPLIN 84</div><div class="locd">Associatif — 250 m&sup2;</div></div><div class="locm">58 531 &euro;</div></div>
+    <div class="loc"><div><div class="locn">CENTERFETE</div><div class="locd">Commerce — 400 m&sup2;</div></div><div class="locm">52 000 &euro;</div></div>
+    <div class="loc"><div><div class="locn">ASSOCIATION GRAIN</div><div class="locd">Associatif — 320 m&sup2;</div></div><div class="locm">28 697 &euro;</div></div>
+    <div class="loc"><div><div class="locn">3ID (Assist. DAV)</div><div class="locd">Bureaux — 300 m&sup2;</div></div><div class="locm">27 619 &euro;</div></div>
+    <div class="loc vacant"><div><div class="locn">4 lots vacants</div><div class="locd">Bureaux — 932 m&sup2; total</div></div><div class="locm" style="color:var(--ink30)">+131 000 &euro;</div></div>
+  </div>
+  
+  <div style="margin-top:20px;display:flex;gap:24px;flex-wrap:wrap" class="rv">
+    <div style="background:var(--card);border:1px solid var(--ink10);border-radius:6px;padding:12px 20px;display:flex;gap:12px;align-items:baseline">
+      <span style="font-family:var(--mono);font-size:1.1rem;font-weight:700;color:var(--gold)">884 059 &euro;</span>
+      <span style="font-size:.7rem;color:var(--ink30)">Loyers reels /an</span>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--ink10);border-radius:6px;padding:12px 20px;display:flex;gap:12px;align-items:baseline">
+      <span style="font-family:var(--mono);font-size:1.1rem;font-weight:700">1 015 059 &euro;</span>
+      <span style="font-size:.7rem;color:var(--ink30)">Total potentiel (incl. vacants)</span>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--ink10);border-radius:6px;padding:12px 20px;display:flex;gap:12px;align-items:baseline">
+      <span style="font-family:var(--mono);font-size:1.1rem;font-weight:700;color:var(--green)">101 &euro;/m&sup2;</span>
+      <span style="font-size:.7rem;color:var(--ink30)">Loyer moyen pondere</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SCENARIO BASE -->
+<section id="base" style="background:var(--w);border-top:1px solid var(--ink10)">
+<div class="c">
+  <div class="scenarios rv">
+    <div class="sbox primary">
+      <h3>Scenario Base — Conservation 15 ans</h3>
+      <p>Detention integrale. Vacants loues An 2 (1 015 K&euro;/an). Amortissement complet du pret par les loyers. Actif libre de dette a l'An 15.</p>
+      <div class="skpis">
+        <div class="skpi"><div class="skpiv green">1,68x</div><div class="skpil">DSCR An 2</div></div>
+        <div class="skpi"><div class="skpiv gold">60%</div><div class="skpil">LTV initiale</div></div>
+        <div class="skpi"><div class="skpiv">0 &euro;</div><div class="skpil">CRD An 15</div></div>
+        <div class="skpi"><div class="skpiv gold">1,19 M&euro;</div><div class="skpil">NOI An 15</div></div>
+      </div>
+    </div>
+    <div class="sbox option">
+      <h3>Option Arbitrage — Desendettement An 2-3</h3>
+      <p>Capacite de cession de 3 lots avec locataires en place pour 7 M&euro; brut. Permet de solder le pret bancaire en 3 ans. Non necessaire mais filet de securite.</p>
+      <div class="skpis">
+        <div class="skpi"><div class="skpiv green">7 M&euro;</div><div class="skpil">Potentiel cession</div></div>
+        <div class="skpi"><div class="skpiv green">0 &euro;</div><div class="skpil">CRD apres arbitrage</div></div>
+        <div class="skpi"><div class="skpiv">543 K&euro;</div><div class="skpil">Loyers residuels</div></div>
+        <div class="skpi"><div class="skpiv gold">&infin;</div><div class="skpil">DSCR (dette soldee)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Valorisation An 15 -->
+  <div style="margin-top:40px">
+    <div class="stag rv">Valorisation a l'An 15 (scenario base — sortie optionnelle)</div>
+    <div class="shr rv"></div>
+    <div class="tbl-wrap"><table class="tbl rv d1">
+      <thead>
+        <tr><th>Hypothese</th><th class="r">Cap Rate</th><th class="r">NOI An 15</th><th class="r">Valeur bloc</th><th class="r">Plus-value / Prix acq.</th><th class="r">TRI Fondateur</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Conservateur</td><td class="r">9,0%</td><td class="r">1 237 K&euro;</td><td class="r b">13 745 K&euro;</td><td class="r">+3,7 M&euro;</td><td class="r">~11%</td></tr>
+        <tr class="hl"><td class="b gold">Median</td><td class="r gold">8,0%</td><td class="r">1 237 K&euro;</td><td class="r b gold">15 463 K&euro;</td><td class="r gold">+5,5 M&euro;</td><td class="r b gold">~14%</td></tr>
+        <tr><td>Optimiste</td><td class="r">7,0%</td><td class="r">1 237 K&euro;</td><td class="r b">17 672 K&euro;</td><td class="r">+7,7 M&euro;</td><td class="r">~18%</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+</section>
+
+<!-- OPTION ARBITRAGE DETAIL -->
+<section id="option">
+<div class="c">
+  <div class="stag rv">Option Arbitrage — Detail des lots cessibles</div>
+  <div class="stitle rv d1">3 lots, <em>7 M&euro;</em> de valeur de cession</div>
+  <div class="shr rv d2"></div>
+  <div class="sdesc rv d2">Les lots sont cedes avec bail commercial en cours. Le produit net de cession est affecte en priorite au remboursement anticipe du CRD bancaire. Cette option est presentee comme un filet de securite, pas comme le plan central.</div>
+
+  <div class="cg rv d3">
+    <div class="cb">
+      <div class="cbtag">LOT A — An 2</div>
+      <div class="cbv">3 000 K&euro;</div>
+      <div class="cbl">YOU JUMP 84 — 3 250 m&sup2;</div>
+      <div class="cbm">
+        <div class="cbmk"><div class="cbmkv">218 K&euro;</div><div class="cbmkl">Loyer / an</div></div>
+        <div class="cbmk"><div class="cbmkv">6,0%</div><div class="cbmkl">Cap rate</div></div>
+      </div>
+    </div>
+    <div class="cb">
+      <div class="cbtag">LOT B — An 2-3</div>
+      <div class="cbv">2 800 K&euro;</div>
+      <div class="cbl">GIVAUDAN + Vacant — 2 466 m&sup2;</div>
+      <div class="cbm">
+        <div class="cbmk"><div class="cbmkv">182 K&euro;</div><div class="cbmkl">Loyer / an</div></div>
+        <div class="cbmk"><div class="cbmkv">6,5%</div><div class="cbmkl">Cap rate</div></div>
+      </div>
+    </div>
+    <div class="cb reco">
+      <div class="cbtag">LOT C — An 2-3</div>
+      <div class="cbv">1 200 K&euro;</div>
+      <div class="cbl">SCI VITAL — 680 m&sup2;</div>
+      <div class="cbm">
+        <div class="cbmk"><div class="cbmkv">120 K&euro;</div><div class="cbmkl">Loyer / an</div></div>
+        <div class="cbmk"><div class="cbmkv">9,0%</div><div class="cbmkl">Cap rate</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Impact table -->
+  <div class="tbl-wrap"><table class="tbl rv">
+    <caption>Impact des cessions sur le CRD bancaire et le rendement residuel</caption>
+    <thead>
+      <tr><th>Scenario</th><th class="r">Cession brute</th><th class="r">Produit net</th><th class="r">CRD apres</th><th class="r">Loyers conserves</th><th class="r">DSCR residuel</th><th class="r">LTV residuelle</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="b">O-1 — LOT A seul</td><td class="r">3 000 K&euro;</td><td class="r">2 535 K&euro;</td><td class="r gold">3 178 K&euro;</td><td class="r">666 K&euro;/an</td><td class="r green">2,72x</td><td class="r">~32%</td></tr>
+      <tr><td class="b">O-2 — LOT A + C</td><td class="r">4 200 K&euro;</td><td class="r">3 495 K&euro;</td><td class="r gold">2 218 K&euro;</td><td class="r">546 K&euro;/an</td><td class="r green">3,11x</td><td class="r">~22%</td></tr>
+      <tr class="hl"><td class="b green">O-3 — LOT A+B+C ★</td><td class="r b">7 000 K&euro;</td><td class="r b">6 165 K&euro;</td><td class="r b green">0 &euro; — SOLDE</td><td class="r">543 K&euro;/an</td><td class="r b green">&infin;</td><td class="r b green">0%</td></tr>
+    </tbody>
+  </table></div>
+  <p style="font-size:.7rem;color:var(--ink30);margin-top:8px;font-style:italic">★ Scenario O-3 : le produit net (6 165 K&euro;) couvre integralement le CRD An 3 (~5 100 K&euro;) avec un excedent de ~1 065 K&euro;. Loyers residuels conserves : 543 K&euro;/an (7 locataires + 4 vacants loues), rente nette ~483 K&euro;/an.</p>
+</div>
+</section>
+
+<!-- STRUCTURE -->
+<section id="structure" style="background:var(--w);border-top:1px solid var(--ink10)">
+<div class="c">
+  <div class="stag rv">Structure capitalistique</div>
+  <div class="stitle rv d1">Subordination <em>claire</em>, dette securisee</div>
+  <div class="shr rv d2"></div>
+
+  <!-- Waterfall bars -->
+  <div class="waterfall rv d2">
+    <div class="wbar" style="height:53%;background:linear-gradient(to top,#1a3a5c,#2563eb)"><div class="wv">6,0 M&euro;</div><div class="wp">52,7%</div><div class="wl">Pret Senior</div></div>
+    <div class="wbar" style="height:21%;background:linear-gradient(to top,var(--goldD),var(--gold))"><div class="wv">2,4 M&euro;</div><div class="wp">21,1%</div><div class="wl">OC 7%</div></div>
+    <div class="wbar" style="height:23%;background:linear-gradient(to top,#5a4a1e,var(--goldL))"><div class="wv">2,66 M&euro;</div><div class="wp">23,4%</div><div class="wl">CCA 7%</div></div>
+    <div class="wbar" style="height:3%;background:var(--ink30)"><div class="wv" style="font-size:.5rem">310K</div><div class="wp">2,7%</div><div class="wl">Capital</div></div>
+  </div>
+
+  <div class="tbl-wrap"><table class="tbl rv d3">
+    <thead>
+      <tr><th>Ressource</th><th class="r">Montant</th><th class="c">% Total</th><th>Taux / Conditions</th><th>Rang</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="b">Pret bancaire senior</td><td class="r b gold">6 000 000 &euro;</td><td class="c">52,7%</td><td>4,50% fixe / 15 ans</td><td class="b gold">Rang 1 — Senior</td></tr>
+      <tr><td>Obligations Convertibles (OC)</td><td class="r">2 400 000 &euro;</td><td class="c">21,1%</td><td>7% PIK An 1, cash An 2+</td><td>Rang 2 — Subordonne</td></tr>
+      <tr><td>Comptes Courants (CCA)</td><td class="r">2 664 000 &euro;</td><td class="c">23,4%</td><td>7% — bloques 3 ans min.</td><td>Rang 3 — Subordonne</td></tr>
+      <tr><td>Capital SCI (fonds propres)</td><td class="r">310 000 &euro;</td><td class="c">2,7%</td><td>Fondateur 150K + Invest. 160K</td><td>Rang 4 — Junior</td></tr>
+      <tr class="hl"><td class="b">TOTAL</td><td class="r b">11 374 000 &euro;</td><td class="c b">100%</td><td></td><td></td></tr>
+    </tbody>
+  </table></div>
+
+  <!-- Suretes -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:24px" class="rv">
+    <div style="background:var(--ink05);border-radius:8px;padding:16px">
+      <div style="font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px">Suretes reelles</div>
+      <div style="font-size:.75rem;color:var(--ink60);line-height:1.7">Hypotheque 1er rang (167% couverture). Nantissement parts SCI. Cession Dailly loyers.</div>
+    </div>
+    <div style="background:var(--ink05);border-radius:8px;padding:16px">
+      <div style="font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px">Covenants</div>
+      <div style="font-size:.75rem;color:var(--ink60);line-height:1.7">DSCR &ge; 1,15x. LTV &le; 80%. Loyers &ge; 850 K&euro;/an. Occupation &ge; 65%. Reporting annuel certifie.</div>
+    </div>
+    <div style="background:var(--ink05);border-radius:8px;padding:16px">
+      <div style="font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px">Assurances</div>
+      <div style="font-size:.75rem;color:var(--ink60);line-height:1.7">MRI 100% valeur venale. Loyers impayes top 5 locataires. Deces-invalidite gerant. Caution personnelle.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- RENDEMENTS & TRI -->
+<section id="rendements">
+<div class="c">
+  <div class="stag rv">Analyse de rendement</div>
+  <div class="stitle rv d1">TRI & rendement <em>a horizon</em></div>
+  <div class="shr rv d2"></div>
+
+  <div class="tbl-wrap"><table class="tbl rv d2">
+    <caption>Analyse TRI fondateur selon horizon et scenario (hors vacants, base loyers reels)</caption>
+    <thead>
+      <tr><th>Scenario / Horizon</th><th class="r">Capital investi net</th><th class="r">Cash-flows cumules</th><th class="r">Valeur residuelle</th><th class="r">TRI</th><th class="r">MOIC</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="b">Base 15 ans — Conservation</td><td class="r">5 374 K&euro;</td><td class="r">~5 500 K&euro;</td><td class="r">14 982 K&euro; (cap 8%)</td><td class="r b gold">~14%</td><td class="r b gold">3,8x</td></tr>
+      <tr><td class="b">Base 10 ans — Cession bloc</td><td class="r">5 374 K&euro;</td><td class="r">~3 200 K&euro;</td><td class="r">12 400 K&euro; (cap 8%)</td><td class="r b">~13%</td><td class="r">2,9x</td></tr>
+      <tr class="hl"><td class="b green">Option O-3 — Arbitrage An 3</td><td class="r">5 374 K&euro;</td><td class="r">~1 065 K&euro; exced.</td><td class="r">Actif 3 696 m&sup2; libre</td><td class="r b green">~16%</td><td class="r b green">N/A*</td></tr>
+    </tbody>
+  </table></div>
+  <p style="font-size:.65rem;color:var(--ink30);margin-top:6px;font-style:italic">* Scenario O-3 : le fondateur conserve un actif genere ~367 K&euro;/an libre de dette + excedent de tresorerie ~1 065 K&euro;. Le TRI inclut la valeur residuelle de l'actif conserve.</p>
+
+  <!-- Rendement residuel post-arbitrage -->
+  <div style="margin-top:32px">
+    <div class="stag rv">Rendement residuel apres arbitrage partiel</div>
+    <div class="shr rv"></div>
+    <div class="mg rv d1">
+      <div class="mc"><div class="mcv gold">12,5%</div><div class="mcl">Rdt brut O-1</div><div class="mcs">Apres cession LOT A</div></div>
+      <div class="mc"><div class="mcv gold">14,2%</div><div class="mcl">Rdt brut O-2</div><div class="mcs">Apres cession A+C</div></div>
+      <div class="mc"><div class="mcv green">17,1%</div><div class="mcl">Rdt brut O-3</div><div class="mcs">Apres A+B+C (libre)</div></div>
+      <div class="mc"><div class="mcv">367 K&euro;</div><div class="mcl">Rente nette O-3</div><div class="mcs">Cash libre /an</div></div>
+      <div class="mc"><div class="mcv green">0%</div><div class="mcl">LTV O-3</div><div class="mcs">Actif libre de dette</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+<div class="c">
+  <div class="fbot">
+    <div><strong>District One</strong> — SCI District One (en formation) — ZI Fontvert, Le Pontet 84130</div>
+    <div>CONFIDENTIEL — Avril 2026 — V2</div>
+  </div>
+  <div class="fleg">L'investissement comporte un risque de perte en capital et d'illiquidite. Les projections reposent sur des hypotheses susceptibles de ne pas se realiser. Document strictement confidentiel, reserve aux investisseurs professionnels et etablissements bancaires. Toute reproduction interdite sans autorisation ecrite.</div>
+</div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', async function() {
+  async function sha256(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('')}
+  const passwords=[
+    {user:"Az (Admin)",pwd:"Azel2026",active:true},
+    {user:"Banque",pwd:"Banque2026",active:true},
+    {user:"Investisseur",pwd:"Invest2026",active:true},
+    {user:"SCI Jacimmo",pwd:"Jacimmo2026",active:true},
+    {user:"Notaire",pwd:"Notaire2026",active:true},
+    {user:"Guest",pwd:"GuestD1",active:true},
+    {user:"Sextant",pwd:"Sextant2026",active:true},
+  ];
+  for(let p of passwords) p.hash=await sha256(p.pwd);
+  const AUTH='d1_auth',NDA='d1_nda_';
+  const saved=sessionStorage.getItem(AUTH);
+  if(saved&&passwords.find(p=>p.user===saved&&p.active)){initReveal();return}
+  const allC=document.querySelectorAll('nav,section,footer');
+  allC.forEach(el=>el.style.display='none');
+  const sc=document.createElement('div');sc.id='ls';
+  sc.innerHTML=`<div id="lo"><div class="lb" id="s1"><div class="ll">District <span>One</span></div><div class="lt">Confidential Document</div><div class="ln"></div><div class="la">Access Password</div><input type="password" id="ip" placeholder="Enter your access code" autocomplete="off"/><button class="lg" id="bp">Access Document</button><div class="le" id="ep"></div><div class="lf">Access restricted to authorized recipients.<br>Unauthorized access is prohibited.</div></div><div class="lb lw" id="s2" style="display:none"><div class="ll">District <span>One</span></div><div class="lt">Non-Disclosure Agreement</div><div class="ln"></div><div class="nb"><h3>CONFIDENTIALITY AND NON-DISCLOSURE AGREEMENT</h3><p class="nd">District One — SCI District One — April 2026</p><p>By accessing this document, you (the <b>"Recipient"</b>) acknowledge and agree to the following terms regarding the confidential information contained herein (the <b>"Confidential Information"</b>):</p><p><b>1. DEFINITION</b><br>Confidential Information includes all financial data, projections, business plans, tenant information, rental schedules, property valuations, investor terms, acquisition strategies, personal patrimony data, and any other information disclosed through this platform.</p><p><b>2. OBLIGATIONS</b><br>The Recipient agrees to: (a) hold all Confidential Information in strict confidence; (b) not disclose to any third party without prior written consent; (c) not use for any purpose other than evaluating the proposed transaction; (d) restrict access to representatives bound by similar obligations; (e) not copy or distribute without authorization.</p><p><b>3. EXCLUSIONS</b><br>Does not apply to information that is publicly available, was already possessed, is independently developed, or is required by law.</p><p><b>4. RETURN</b><br>Upon request, the Recipient shall promptly return or destroy all copies and certify in writing.</p><p><b>5. DURATION</b><br>This Agreement remains in effect for <b>three (3) years</b> from acceptance.</p><p><b>6. REMEDIES</b><br>Breach may cause irreparable harm entitling SCI District One to injunctive relief.</p><p><b>7. GOVERNING LAW</b><br>Governed by French law. Exclusive jurisdiction: courts of Avignon, France.</p><p class="ns">By checking the box below, you confirm that you have read, understood, and agree to be bound by this Agreement.</p></div><div class="nr"><input type="checkbox" id="ic"/><label for="ic">I have read and accept the terms of this Confidentiality Agreement</label></div><div class="nf"><input type="text" id="in" placeholder="Your full name"/><input type="email" id="ie" placeholder="Your email address"/></div><button class="lg" id="bn" disabled>I Accept — Sign NDA</button><div class="le" id="en"></div></div><div class="lb" id="s3" style="display:none"><div class="ll">District <span>One</span></div><div class="lk">&#10003;</div><div class="lkt">NDA Signed Successfully</div><div class="lks">A record has been saved. You may now access the document.</div><button class="lg" id="be">Enter Document</button></div></div>`;
+  document.body.prepend(sc);
+  const cs=document.createElement('style');
+  cs.textContent=`#lo{position:fixed;top:0;left:0;right:0;bottom:0;z-index:10000;background:#0f1117;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',system-ui,sans-serif;padding:20px}.lb{background:#1a1a2e;border:1px solid rgba(166,139,60,.2);border-radius:16px;padding:40px 36px;max-width:420px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.5)}.lw{max-width:580px;text-align:left}.ll{font-family:'DM Serif Display',Georgia,serif;font-size:1.5rem;color:#fff;margin-bottom:4px;text-align:center}.ll span{color:#a68b3c}.lt{font-size:.6rem;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:3px;font-weight:500;margin-bottom:16px;text-align:center}.ln{width:40px;height:2px;background:#a68b3c;margin:0 auto 20px;border-radius:1px}.la{font-size:.72rem;color:rgba(255,255,255,.5);margin-bottom:8px;text-align:left}#ip{width:100%;padding:13px 14px;border:1px solid rgba(255,255,255,.1);border-radius:8px;background:rgba(255,255,255,.05);color:#fff;font-size:.95rem;font-family:'JetBrains Mono',monospace;outline:none;letter-spacing:2px}#ip:focus{border-color:#a68b3c}#ip::placeholder{color:rgba(255,255,255,.2);letter-spacing:0;font-family:'DM Sans',sans-serif;font-size:.8rem}.lg{width:100%;padding:13px;margin-top:14px;background:#a68b3c;color:#0f1117;border:none;border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:all .3s}.lg:hover:not(:disabled){background:#c4a84d}.lg:disabled{opacity:.3;cursor:not-allowed}.le{color:#c0392b;font-size:.72rem;margin-top:10px;min-height:18px;text-align:center}.lf{font-size:.55rem;color:rgba(255,255,255,.12);margin-top:20px;line-height:1.5}.nb{max-height:300px;overflow-y:auto;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:18px;margin-bottom:14px;font-size:.7rem;color:rgba(255,255,255,.55);line-height:1.7}.nb h3{color:#a68b3c;font-size:.8rem;margin-bottom:6px;text-align:center;text-transform:uppercase;letter-spacing:1px}.nb .nd{text-align:center;color:rgba(255,255,255,.25);font-size:.6rem;margin-bottom:14px}.nb p{margin-bottom:10px}.nb .ns{color:#a68b3c;font-weight:500;border-top:1px solid rgba(255,255,255,.07);padding-top:10px;margin-top:14px}.nr{display:flex;align-items:flex-start;gap:10px;margin:10px 0}.nr input[type=checkbox]{margin-top:3px;accent-color:#a68b3c;width:16px;height:16px;flex-shrink:0;cursor:pointer}.nr label{font-size:.7rem;color:rgba(255,255,255,.6);line-height:1.5;cursor:pointer}.nf{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:2px}.nf input{padding:10px 12px;border:1px solid rgba(255,255,255,.1);border-radius:6px;background:rgba(255,255,255,.05);color:#fff;font-size:.78rem;font-family:'DM Sans',sans-serif;outline:none}.nf input:focus{border-color:#a68b3c}.nf input::placeholder{color:rgba(255,255,255,.2)}.lk{font-size:2.5rem;color:#1a7a4c;margin:14px 0 6px}.lkt{font-size:.95rem;color:#fff;font-weight:600;margin-bottom:4px}.lks{font-size:.65rem;color:rgba(255,255,255,.35);margin-bottom:14px;line-height:1.5}@media(max-width:600px){.nf{grid-template-columns:1fr}.lb{padding:28px 20px}.nb{max-height:240px}}`;
+  document.head.appendChild(cs);
+  let curUser=null;
+  const bp=document.getElementById('bp'),ip=document.getElementById('ip'),ep=document.getElementById('ep');
+  async function ck(){const v=ip.value.trim();if(!v){ep.textContent='Please enter your access code.';return}const h=await sha256(v);const f=passwords.find(p=>p.hash===h&&p.active);if(f){curUser=f.user;ep.textContent='';if(localStorage.getItem(NDA+f.user)){sessionStorage.setItem(AUTH,f.user);go()}else{document.getElementById('s1').style.display='none';document.getElementById('s2').style.display='block'}}else{ep.textContent='Incorrect password or access revoked.';ip.value='';ip.style.borderColor='#c0392b';setTimeout(()=>ip.style.borderColor='',2000)}}
+  bp.addEventListener('click',ck);ip.addEventListener('keydown',e=>{if(e.key==='Enter')ck()});
+  const ic=document.getElementById('ic'),iN=document.getElementById('in'),iE=document.getElementById('ie'),bn=document.getElementById('bn');
+  function ur(){bn.disabled=!(ic.checked&&iN.value.trim().length>=2&&iE.value.includes('@'))}
+  ic.addEventListener('change',ur);iN.addEventListener('input',ur);iE.addEventListener('input',ur);
+  bn.addEventListener('click',function(){const nm=iN.value.trim(),em=iE.value.trim();if(!ic.checked||nm.length<2||!em.includes('@'))return;localStorage.setItem(NDA+curUser,JSON.stringify({user:curUser,name:nm,email:em,date:new Date().toISOString()}));sessionStorage.setItem(AUTH,curUser);document.getElementById('s2').style.display='none';document.getElementById('s3').style.display='block'});
+  document.getElementById('be').addEventListener('click',go);
+  function go(){const s=document.getElementById('ls');if(s){s.style.transition='opacity .4s';s.style.opacity='0';setTimeout(()=>{s.remove();allC.forEach(el=>el.style.display='');initReveal()},400)}else{allC.forEach(el=>el.style.display='');initReveal()}}
+  function initReveal(){const o=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('v');o.unobserve(i.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.rv').forEach(el=>o.observe(el))}
+  ip.focus();
+});
+</script>
+</body>
+</html>
